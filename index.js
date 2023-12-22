@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const display = document.getElementById('countDisplay');
 
     button.onclick = function() {
+        count++;
         display.innerText = count;
     };
 });
