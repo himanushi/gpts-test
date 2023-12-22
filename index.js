@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
 
     minusButton.onclick = function() {
-        count--;
-        display.innerText = count;
+        if (count > 0) {
+            count--;
+            display.innerText = count;
+        }
     };
 });
