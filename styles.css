@@ -49,3 +49,33 @@ h1 {
 .calculator .button:hover {
     background-color: #ddd;
 }
+
+/* Numeric buttons */
+.calculator .digit {
+    background-color: #ffc800; 
+    color: white;
+}
+
+/* Operator buttons */
+.calculator .oper {
+    background-color: #17a2b8; 
+    color: white;
+}
+
+/* Equals button */
+.calculator .equals {
+    background-color: #28a745;
+    color: white;
+    grid-column: span 3;
+}
+
+/* Clear button */
+.calculator .clr {
+    background-color: #ff4500;
+    color: white;
+}
+
+/* Hover effect */
+.calculator .button:hover {
+    opacity: 0.7;
+}
