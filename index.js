@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const display = document.getElementById('display');
+    const history = document.getElementById('history');
     const digits = Array.from(document.getElementsByClassName('digit'));
     const opers = Array.from(document.getElementsByClassName('oper'));
     const equals = document.getElementsByClassName('equals')[0];
@@ -17,16 +18,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // for operator buttons
     opers.forEach(button => {
         button.addEventListener('click', (e) => {
-            displayValue += e.target.innerText;
+            displayValue += ' ' + e.target.innerText + ' ';
             display.value = displayValue;
         });
     });
 
     // for equals button
     equals.addEventListener('click', () => {
-        try{
+        try {
             displayValue = eval(displayValue);
+            const historyItem = document.createElement('p');
+            historyItem.textContent = displayValue;
+            history.appendChild(historyItem);
             display.value = displayValue;
+            displayValue.toString();
         } catch {
             display.value = "Error";
             displayValue = '';
