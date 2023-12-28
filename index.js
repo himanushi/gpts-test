@@ -1,27 +1,41 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    let display = document.getElementById('display');
-    let buttons = Array.from(document.getElementsByClassName('button'));
+    const display = document.getElementById('display');
+    const digits = Array.from(document.getElementsByClassName('digit'));
+    const opers = Array.from(document.getElementsByClassName('oper'));
+    const equals = document.getElementsByClassName('equals')[0];
+    const clr = document.getElementsByClassName('clr')[0];
     let displayValue = '';
 
-    buttons.map( button => {
+    // for numeric buttons
+    digits.forEach(button => {
         button.addEventListener('click', (e) => {
-            let buttonText = e.target.innerText;
-            if(button.innerText === 'C'){
-                displayValue = '';
-                display.innerText = '';
-            } else if(buttonText === '=') {
-                try{
-                    displayValue = eval(displayValue);
-                    display.innerText = displayValue;
-                }
-                catch{
-                    display.innerText = "Error";
-                    displayValue = '';
-                }
-            } else {
-                displayValue += buttonText;
-                display.innerText = displayValue;
-            }
+            displayValue += e.target.innerText;
+            display.value = displayValue;
         });
+    });
+
+    // for operator buttons
+    opers.forEach(button => {
+        button.addEventListener('click', (e) => {
+            displayValue += e.target.innerText;
+            display.value = displayValue;
+        });
+    });
+
+    // for equals button
+    equals.addEventListener('click', () => {
+        try{
+            displayValue = eval(displayValue);
+            display.value = displayValue;
+        } catch {
+            display.value = "Error";
+            displayValue = '';
+        }
+    });
+
+    // for clear button
+    clr.addEventListener('click', () => {
+        displayValue = '';
+        display.value = '';
     });
 });
