@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // for operator buttons
     opers.forEach(button => {
         button.addEventListener('click', (e) => {
-            displayValue += ' ' + e.target.innerText + ' ';
+            if (display.value == displayValue) {
+                displayValue += ' ' + e.target.innerText + ' ';
+            } else {
+                displayValue = display.value + ' ' + e.target.innerText + ' ';
+            }
             display.value = displayValue;
         });
     });
@@ -26,11 +30,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // for equals button
     equals.addEventListener('click', () => {
         try {
+            const calculation = displayValue;
             displayValue = eval(displayValue);
             const historyItem = document.createElement('p');
             historyItem.textContent = displayValue;
             historyItem.addEventListener('click', () => {
                 display.value = historyItem.textContent;
+                displayValue = display.value; // update displayValue
             });
             history.appendChild(historyItem);
             display.value = displayValue;
