@@ -66,7 +66,6 @@ h1 {
 .calculator .equals {
     background-color: #28a745;
     color: white;
-    grid-column: span 3;
 }
 
 /* Clear button */
