@@ -26,12 +26,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // for equals button
     equals.addEventListener('click', () => {
         try {
+            const calculation = displayValue;
             displayValue = eval(displayValue);
             const historyItem = document.createElement('p');
-            historyItem.textContent = displayValue;
+            historyItem.textContent = calculation + ' = ' + displayValue;
+            historyItem.addEventListener('click', () => {
+                display.value = historyItem.textContent;
+            });
             history.appendChild(historyItem);
             display.value = displayValue;
-            displayValue.toString();
+            displayValue = displayValue.toString();
         } catch {
             display.value = "Error";
             displayValue = '';
